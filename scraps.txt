@@ -1,0 +1,15 @@
+Методы @Repository
+https://alexkosarev.name/2017/02/09/spring-data-jpa-magic-methods/
+
+Удалить файл из индекса, оставив его при этом в рабочем каталоге
+$ git rm --cached readme.txt
+Удалить файл для каждого коммита в истории ветки (если он присутствует)
+$ git filter-branch --index-filter "git rm --cached --ignore-unmatch path/to/file" --prune-empty HEAD
+
+
+
+
+
+
+
+
