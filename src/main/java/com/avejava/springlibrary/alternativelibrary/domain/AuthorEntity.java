@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "author", catalog = "library")
+@Table(name = "author")
 @EqualsAndHashCode(of = "id")
 @Getter @Setter
 @DynamicUpdate

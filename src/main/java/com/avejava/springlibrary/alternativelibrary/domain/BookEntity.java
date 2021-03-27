@@ -10,7 +10,7 @@ import org.hibernate.annotations.SelectBeforeUpdate;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "book", catalog = "library")
+@Table(name = "book")
 @EqualsAndHashCode(of = "id")
 @Getter @Setter
 @DynamicUpdate
@@ -59,19 +59,15 @@ public class BookEntity {
 
     private String isbn;
 
-    @Column(name = "genre_id")
-    // @JoinColumn может иметь атрибут name - название колонки с внешним ключем (ссылающимся на данное поле). таблица, в которой она находится зависит от контекста (В соответствующем Entity будет аннотация типа @ManyToOne).
-    @JoinColumn     // внедряет объект Genre по значению столбца genre_id данной сущности (Book) (может присутствовать атрибут name - имя столбца )
-    @ManyToOne      // много книг могут относиться к какому-либо жанру
+    @JoinColumn(name = "genre_id")      // сохраняет в данное поле сущность типа GenreEntity
+    @ManyToOne                          // много книг могут относиться к какому-либо жанру
     private GenreEntity genre;
 
-    @Column(name = "author_id")
-    @JoinColumn
+    @JoinColumn(name = "author_id")
     @ManyToOne
     private AuthorEntity author;
 
-    @Column(name = "publisher_id")
-    @JoinColumn
+    @JoinColumn(name = "publisher_id")
     @ManyToOne
     private PublisherEntity publisher;
 
@@ -84,7 +80,7 @@ public class BookEntity {
     @Column(name = "avg_rating")
     private int avgRating;
 
-    @Column(name = "total_vote_count", columnDefinition = "total_vote_count")
+    @Column(name = "total_vote_count")
     private long totalVoteCount;
 
     @Column(name = "total_rating")

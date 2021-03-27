@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "genre", catalog = "library")
+@Table(name = "genre")
 @EqualsAndHashCode(of = "id")
 @Getter @Setter
 @DynamicUpdate
