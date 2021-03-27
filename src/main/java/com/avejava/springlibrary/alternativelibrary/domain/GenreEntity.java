@@ -21,7 +21,7 @@ public class GenreEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;

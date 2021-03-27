@@ -22,7 +22,7 @@ import java.util.List;
 public class AuthorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     private String fio;
 

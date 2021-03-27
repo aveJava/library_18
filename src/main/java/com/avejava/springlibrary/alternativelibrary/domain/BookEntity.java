@@ -22,14 +22,14 @@ public class BookEntity {
     }
 
     public BookEntity(Long id, byte[] image) {
-        Id = id;
+        id = id;
         this.image = image;
     }
 
     // все поля, кроме content
     public BookEntity(Long id, String name, int pageCount, String isbn, GenreEntity genre, AuthorEntity author, PublisherEntity publisher,
                       int publishYear, byte[] image, int avgRating, long totalVoteCount, long totalRating, long viewCount, String description) {
-        Id = id;
+        id = id;
         this.name = name;
         this.pageCount = pageCount;
         this.isbn = isbn;
@@ -47,7 +47,7 @@ public class BookEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     private String name;
 
