@@ -1,13 +1,9 @@
 package com.avejava.springlibrary.alternativelibrary;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication
-public class AlternativelibraryApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(AlternativelibraryApplication.class, args);
-    }
+@SpringBootApplication(scanBasePackages = {"com.avejava.springlibrary.alternativelibrary"})
+public class AlternativelibraryApplication extends SpringBootServletInitializer {
 
 }
