@@ -3,7 +3,6 @@ package com.avejava.springlibrary.alternativelibrary.repository;
 import com.avejava.springlibrary.alternativelibrary.domain.BookEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -36,6 +35,9 @@ public interface BookEntityRepo extends JpaRepository<BookEntity, Long> {
             "b.image, b.avgRating, b.totalVoteCount, b.totalRating, b.viewCount, b.description) from BookEntity b " +
             "WHERE b.genre.id = :genreId")
     Page<BookEntity> findByGenre(@Param("genreId") int genreId, Pageable pageable);
+
+    // поиск книг по имени книги и/или фио автора с постраничностью
+    Page<BookEntity> findByNameContainingIgnoreCaseOrAuthorFioContainingIgnoreCaseOrderByName(String name, String fio, Pageable pageable);
 
     // получение контента по id
     @Query("SELECT b.content FROM BookEntity b WHERE b.id=:id")
