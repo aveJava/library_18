@@ -26,6 +26,16 @@ public interface BookEntityRepo extends JpaRepository<BookEntity, Long> {
     @Query("update BookEntity b set b.content=:content where b.id=:id")     // :content - это ссылка на @Param("content")
     void updateContent(@Param("content") byte[] content, @Param("id") long id);
 
+    // обновляет количество просмотров книги по id
+    @Modifying(clearAutomatically = true)
+    @Query("update BookEntity b set b.viewCount=:viewCount where b.id=:id")
+    void updateViewCount(@Param("id") long id, @Param("viewCount") long viewCount);
+
+    // обновляет данные рейтинга книги по id
+    @Modifying(clearAutomatically = true)
+    @Query("update BookEntity b set b.totalRating=:tRating, b.totalVoteCount=:tVoteCount, b.avgRating=:avgRating where b.id=:id")
+    void updateRating(@Param("id") long id, @Param("tRating") long tRating, @Param("tVoteCount") long tVoteCount, @Param("avgRating") long avgRating);
+
     // Для топовых книг показываем только изображение (в классе Book должен быть соответствующий конструктор)
     @Query("select new com.avejava.springlibrary.alternativelibrary.domain.BookEntity(b.id, b.image) from BookEntity b")
     List<BookEntity> findTopBooks(Pageable pageable);     // у книг будет заполнены только id и image

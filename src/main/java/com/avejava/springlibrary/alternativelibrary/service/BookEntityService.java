@@ -81,4 +81,14 @@ public class BookEntityService implements BookEntityDao {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, sort);
         return bookRepo.findByGenre((int) genreId, pageRequest);
     }
+
+    @Override
+    public void updateViewCount(long id, long viewCount) {
+        bookRepo.updateViewCount(id, viewCount);
+    }
+
+    @Override
+    public void updateRating(long id, long totalRating, long totalViewCount, int avgRating) {
+        bookRepo.updateRating(id, totalRating, totalViewCount, avgRating);
+    }
 }
