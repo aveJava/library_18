@@ -7,21 +7,21 @@
 <body>
     <div th:fragment="main">    <!-- блок, который можно будет включить в другую html-страницу -->
 
-        <div class="container-fluid">
-            <div class="row"></div>     <!-- Верхний отступ -->
+        <div class="container-fluid mainContainer">
+            <div class="row" style="height: 40px"></div>     <!-- Верхний отступ -->
             <div class="row">
                 <div class="col-1"></div>           <!-- Левый отступ -->
 
 
                 <!-- Жанры -->
                 <div class="col-2">
-                    <div class="container-fluid">
+                    <div class="container-fluid genreContainer">
                         <!-- Шапка -->
-                        <div class="row">
+                        <div class="row myTab rouCap" style="margin: 0;">
                             Все жанры
                         </div>
                         <!-- Список жанров -->
-                        <div class="row">test</div>
+                        <div class="row myTab rowGenre">test</div>
 
                     </div>
                 </div>
@@ -35,7 +35,7 @@
 
                 <div class="col-1"></div>           <!-- Правый отступ -->
             </div>
-            <div class="row"></div>     <!-- Нижний отступ -->
+            <div class="row" style="height: 40px"></div>     <!-- Нижний отступ -->
         </div>
 
     </div>

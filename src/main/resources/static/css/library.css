@@ -1,0 +1,34 @@
+.mainContainer {
+    background-color: #ededed;
+}
+
+.genreContainer {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    margin-left: 15%;
+    padding: 0;
+    margin-right: -10%;
+}
+
+.libraryContainer {
+    margin: 0% 4%;
+    height: 96%;
+    width: auto;
+    padding: 0;
+}
+
+.myTab {
+    font-size: 18px;
+    margin: 0;
+    padding: 15px;
+}
+
+.rouCap {
+    margin: 0;
+    background-color: #f3f3f3;
+}
+
+.rowGenre {
+
+}
