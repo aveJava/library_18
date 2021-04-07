@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class RedirectController {
 
-    @GetMapping("/")
-    public String baseUrlRedirect(HttpServletRequest request, HttpServletResponse response, Model model) {
-        return "main/main";
-    }
+//    @GetMapping("/")
+//    public String baseUrlRedirect(HttpServletRequest request, HttpServletResponse response, Model model) {
+//        return "main/main";
+//    }
 
 }
