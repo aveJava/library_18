@@ -22,14 +22,14 @@ public class BookEntity {
     }
 
     public BookEntity(Long id, byte[] image) {
-        id = id;
+        this.id = id;
         this.image = image;
     }
 
     // все поля, кроме content
     public BookEntity(Long id, String name, int pageCount, String isbn, GenreEntity genre, AuthorEntity author, PublisherEntity publisher,
                       int publishYear, byte[] image, int avgRating, long totalVoteCount, long totalRating, long viewCount, String description) {
-        id = id;
+        this.id = id;
         this.name = name;
         this.pageCount = pageCount;
         this.isbn = isbn;
