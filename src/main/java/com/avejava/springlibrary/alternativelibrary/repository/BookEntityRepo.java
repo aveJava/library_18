@@ -39,7 +39,7 @@ public interface BookEntityRepo extends JpaRepository<BookEntity, Long> {
     void updateRating(@Param("id") long id, @Param("tRating") long tRating, @Param("tVoteCount") long tVoteCount, @Param("avgRating") long avgRating);
 
     // Для топовых книг показываем только изображение (в классе Book должен быть соответствующий конструктор)
-    @Query("select new com.avejava.springlibrary.alternativelibrary.domain.BookEntity(b.id, b.image) from BookEntity b")
+    @Query("select new BookEntity(b.id, b.image) from BookEntity b")
     List<BookEntity> findTopBooks(Pageable pageable);     // у книг будет заполнены только id и image
 
     // поиск книг по жанру
