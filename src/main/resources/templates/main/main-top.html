@@ -8,7 +8,7 @@
     <div th:fragment="main">    <!-- блок, который можно будет включить в другую html-страницу -->
 
         <div class="container-fluid topContainer">
-            <div class="row capHorizontalSpace"></div>  <!-- Отступ сверху от топовых книг -->
+            <div class="row" style="height: 3vw"></div>  <!-- Отступ сверху от топовых книг -->
             <div class="row capPlace">
                 <div class="col-2"></div>   <!-- Отступ слева от топовых книг -->
                 <div class="col-8">
@@ -16,7 +16,12 @@
 
                         <!-- Топовые книги -->
                         <div class="row booksTopRow">
-
+                            <th:block th:each="book : ${top}">
+                                <div class="imgContainer">
+                                    <img class="bookTopImg" th:src="'http://localhost:8080/img?id=' + ${book.getId()}">
+                                </div>
+                                <img class="bookTopImg shadow" src="images/book-shadow.png">
+                            </th:block>
                         </div>
 
                         <!-- Полка -->
@@ -28,6 +33,7 @@
                 </div>
                 <div class="col-2"></div>   <!-- Отступ справа от топовых книг -->
             </div>
+            <div class="row" style="height: 5vw"></div>  <!-- Отступ снизу от топовых книг -->
         </div>
 
     </div>

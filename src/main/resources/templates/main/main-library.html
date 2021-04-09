@@ -17,19 +17,22 @@
                 <div class="col-2">
                     <div class="container-fluid genreContainer">
                         <!-- Шапка -->
-                        <div class="row myTab rouCap" style="margin: 0;">
+                        <div class="row myTab header" style="margin: 0;">
                             Все жанры
                         </div>
                         <!-- Список жанров -->
-                        <div class="row myTab rowGenre">test</div>
-
+                        <th:block th:each="genre : ${allGenres}">
+                            <a class="row myTab genreButton" th:href="1">
+                                <th:block th:text="${genre.getName()}"></th:block>
+                            </a>
+                        </th:block>
                     </div>
                 </div>
 
 
                 <!-- Библиотека -->
                 <div class="col-8">
-
+                    <div th:insert="~{main/main-library-books_container :: main}"></div>
                 </div>
 
 

@@ -5,36 +5,46 @@
 }
 
 .capHorizontalSpace {
-    height: 12%;
+    height: 45px;
 }
 
-.capPlace {
-
+.topBookContainer {
+    width: 100%;
+    height: 100%;
+    margin-bottom: -9%;
 }
 
-.bookTopImg {
+.imgContainer {
     width: 18%;
-    height: auto;
+    height: 100%;
     position: relative;
     z-index: 3;
     margin-left: -2.2%;
-    margin-top: 4%;
+}
+
+.bookTopImg {
+    height: 100%;
+    width: 100%;
 }
 
 .booksTopRow {
-    height: 312px;
-    margin-left: 7.5%;
+    height: 100%;
+    margin-left: 8%;
 }
 
 .rowImg {
+    width: 100%;
     position: relative;
     z-index: 1;
     margin-top: -0.8%;
 }
 
 .shadow {
+    width: 18%;
+    height: 84.2%;
     position: relative;
     z-index: 2;
     margin-left: -15%;
     margin-bottom: -1%;
+    margin-top: 4.5%;
 }
