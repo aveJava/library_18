@@ -79,7 +79,7 @@ public class BookEntityService implements BookEntityDao {
     public Page<BookEntity> findByGenre(int pageNumber, int pageSize, String sortField, Sort.Direction sortDirection, long genreId) {
         Sort sort = Sort.by(sortDirection, sortField);
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, sort);
-        return bookRepo.findByGenre((int) genreId, pageRequest);
+        return bookRepo.findByGenre(genreId, pageRequest);
     }
 
     @Override

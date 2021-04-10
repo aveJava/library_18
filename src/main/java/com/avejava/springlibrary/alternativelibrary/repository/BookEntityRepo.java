@@ -46,7 +46,7 @@ public interface BookEntityRepo extends JpaRepository<BookEntity, Long> {
     @Query("select new BookEntity(b.id, b.name, b.pageCount, b.isbn, b.genre, b.author, b.publisher, b.publishYear, " +
             "b.image, b.avgRating, b.totalVoteCount, b.totalRating, b.viewCount, b.description) from BookEntity b " +
             "WHERE b.genre.id = :genreId")
-    Page<BookEntity> findByGenre(@Param("genreId") int genreId, Pageable pageable);
+    Page<BookEntity> findByGenre(@Param("genreId") long genreId, Pageable pageable);
 
     // поиск книг по имени книги и/или фио автора с постраничностью
     Page<BookEntity> findByNameContainingIgnoreCaseOrAuthorFioContainingIgnoreCaseOrderByName(String name, String fio, Pageable pageable);
