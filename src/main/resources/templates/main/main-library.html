@@ -17,12 +17,12 @@
                 <div class="col-2">
                     <div class="container-fluid genreContainer">
                         <!-- Шапка -->
-                        <div class="row myTab header" style="margin: 0;">
+                        <a class="row myTab header genreButton" th:href="@{/main_search(type='all')}">
                             Все жанры
-                        </div>
+                        </a>
                         <!-- Список жанров -->
                         <th:block th:each="genre : ${allGenres}">
-                            <a class="row myTab genreButton" th:href="1">
+                            <a class="row myTab genreButton" th:href="@{/main_search(type='genre', genreId=${genre.getId})}">
                                 <th:block th:text="${genre.getName()}"></th:block>
                             </a>
                         </th:block>
