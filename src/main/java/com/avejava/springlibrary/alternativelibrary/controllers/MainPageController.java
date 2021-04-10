@@ -64,6 +64,7 @@ public class MainPageController {
         model.addAttribute("thisPage", MainPageController.pageNumber);
         model.addAttribute("pageSize", MainPageController.pageSize);
         model.addAttribute("totalElements", MainPageController.totalElements);
+        model.addAttribute("SearchMessage", getSearchMessage());
 
         return "pages/main";
     }
@@ -82,6 +83,10 @@ public class MainPageController {
                 searchType = SearchType.SEARCH_GENRE;
                 this.genreId = genreId;
                 break;
+            case ("keywords"):
+                searchType = SearchType.SEARCH_KEYWORDS;
+                this.keywords = keywords.split(" ");
+                break;
         }
 
         return "redirect:/";
@@ -97,14 +102,52 @@ public class MainPageController {
             case SEARCH_GENRE:
                 pageBooks = bookService.findByGenre(pageNum, pageSize, "viewCount", Sort.Direction.DESC, genreId);
                 break;
+            case SEARCH_KEYWORDS:
+                pageBooks = bookService.search(pageNum, pageSize, "viewCount", Sort.Direction.DESC, keywords);
+                break;
         }
         maxPageNumber = pageBooks.getTotalPages();
         totalElements = pageBooks.getTotalElements();
     }
 
+    // формирует сообщение о критериях, по которым был выполнен поиск, показываемое пользователю
+    public String getSearchMessage() {
+        String message;
+        if (totalElements == 0) message = "Ничего не найдено";
+        else message = "Найдено: " + getCorrectDeclension(totalElements);
+        switch (searchType) {
+            case SEARCH_GENRE:
+                message += " (Жанр: '" + genreService.get(genreId).getName() + "')";
+                break;
+            case SEARCH_KEYWORDS:
+                StringBuilder mess = new StringBuilder();
+                for (int i=0; i<keywords.length; i++) {
+                    mess.append(keywords[i] + " ");
+                }
+                message += " (Поиск: " + mess.toString().trim() + ")";
+                break;
+            default:
+                ;
+        }
+        return message;
+    }
+
+    // возвращает число найденных книг с правильным склонением слова 'книга' (вспомогательный метод)
+    public String getCorrectDeclension(long digit) {
+        if (digit > 99) digit = digit - (digit/100 * 100);
+        if (digit<15 && digit>9) return digit + " книг";
+
+        int units = (int) (digit - (digit/10 * 10));
+        if (units == 1) return digit + " книга";
+        if (units < 5 && units > 1) return digit + " книги";
+        if (units == 0 || units > 4) return digit + " книг";
+        return "хз скоко книг";
+    }
 }
 
+// типы поиска для главной страницы
 enum SearchType {
     ALL,                // найти все книги
     SEARCH_GENRE,       // найти книги определенного жанра
+    SEARCH_KEYWORDS;    // найти книги по ключевым словам (первое слово ищется в названии книги, остальные, если они есть, - в ФИО автора)
 }
