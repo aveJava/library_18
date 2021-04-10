@@ -56,7 +56,7 @@ public class BookEntityService implements BookEntityDao {
 
     @Override
     public Page<BookEntity> search(int pageNumber, int pageSize, String sortField, Sort.Direction sortDirection, String... searchString) {
-        if (searchString.length == 1) searchString = new String[]{searchString[0], ""};
+        if (searchString.length == 1) searchString = new String[]{searchString[0], searchString[0]};
 
         Sort sort = Sort.by(sortDirection, sortField);
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, sort);
