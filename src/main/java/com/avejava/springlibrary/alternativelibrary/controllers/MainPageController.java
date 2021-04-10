@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -143,7 +144,41 @@ public class MainPageController {
         if (units == 0 || units > 4) return digit + " книг";
         return "хз скоко книг";
     }
+
+    // слушает кнопки toolbar'а, перелистывает страницу результатов или меняет ее размер
+    @GetMapping("/Toolbar/{button}")
+    public String toolbar(@PathVariable("button") String button,
+                          @RequestParam(value = "title", required = false) String title,
+                          @RequestParam(value = "size", required = false) Integer size) {
+
+        if (button == null) return "";
+
+        if (button.equals("NumberButtons")) {
+            switch (title) {
+                case "<<":
+                    MainPageController.pageNumber = 1;
+                    break;
+                case "<":
+                    if (MainPageController.pageNumber > 1) MainPageController.pageNumber--;
+                    break;
+                case ">":
+                    MainPageController.pageNumber++;
+                    break;
+                case ">>":
+                    MainPageController.pageNumber = MainPageController.maxPageNumber;
+                    break;
+            }
+        }
+
+        if (button.equals("PageSize")) {
+            pageSize = size;
+        }
+
+        return "redirect:/";
+    }
+
 }
+
 
 // типы поиска для главной страницы
 enum SearchType {
